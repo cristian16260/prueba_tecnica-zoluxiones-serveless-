@@ -1,0 +1,17 @@
+name: Deploy Severless
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hdev14/sls-deploy-action@main
+        with:
+          awsAccessKeyID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          awsSecretAccessKey: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          stage: "dev"
+          region: "us-east-1"
